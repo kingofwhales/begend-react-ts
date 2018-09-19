@@ -3,13 +3,7 @@ import * as ReactDOM from "react-dom";
 
 import Hello from "./containers/Hello";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import { enthusiasm } from "./reducers/index";
-
-const store = createStore(enthusiasm, {
-  enthusiasmLevel: 1,
-  languageName: "TypeScript"
-});
+import { store } from "./store"
 
 ReactDOM.render(
   <Provider store={store}>
