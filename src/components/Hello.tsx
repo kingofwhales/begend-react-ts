@@ -2,27 +2,36 @@ import * as React from 'react';
 
 export interface Props {
   name: string;
-  enthusiasmLevel?: number;
+  enthusiasmLevel: number;
   onIncrement?: () => void;
   onDecrement?: () => void;
 }
 
-function Hello({ name, enthusiasmLevel = 1, onIncrement, onDecrement }: Props) {
-  if (enthusiasmLevel <= 0) {
-    throw new Error("You could be a little more enthusiastic. :D");
+// interface State {
+//   enthusiasmLevel: number;
+// }
+
+class Hello extends React.Component<Props> {
+  constructor(props: Props) {
+    super(props);
   }
 
-  return (
-    <div className="hello">
-      <div className="greeting">
-        Hello {name + getExclamationMarks(enthusiasmLevel)}
+  render () {
+    if (this.props.enthusiasmLevel <= 0) {
+      throw new Error("You could be a little more enthusiastic. :D");
+    }
+    return (
+      <div className="hello">
+        <div className="greeting">
+          Hello {name + getExclamationMarks(this.props.enthusiasmLevel)}
+        </div>
+        <div>
+          <button onClick={this.props.onDecrement}>-</button>
+          <button onClick={this.props.onIncrement}>+</button>
+        </div>
       </div>
-      <div>
-        <button onClick={onDecrement}>-</button>
-        <button onClick={onIncrement}>+</button>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Hello;

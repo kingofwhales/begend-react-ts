@@ -6,7 +6,7 @@ import { StoreState } from "../types";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-export function mapStateToProps({ enthusiasmLevel, languageName }: StoreState) {
+export function mapStateToProps({ enthusiasmLevel = 1, languageName }: StoreState) {
   return {
     enthusiasmLevel,
     name: languageName
